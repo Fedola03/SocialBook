@@ -43,7 +43,7 @@
                         <div class="col-span-2">
                             <label for="profile">Profile Image</label>
                             {% if user_profile.profileimg %}
-                                <img src="{{ user_profile.profileimg.url }}" width="100" height="100" alt="profile image" />
+                                <img src="{{ user_profile.profileimg }}" width="100" height="100" alt="profile image" />
                             {% endif %}
                             <input type="file" name="profile_img" class="shadow-none bg-gray-100">
                         </div>
