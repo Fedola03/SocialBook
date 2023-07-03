@@ -60,7 +60,7 @@
                     </div>
 
                     <!-- notification contents -->
-                    <form action="">
+
                         <div class="flex justify-center flex-center text-center">
 
                             <div class="flex flex-col choose-upload text-center">
@@ -72,17 +72,19 @@
                                         <path d="M9 13h2v5a1 1 0 11-2 0v-5z"/>
                                     </svg>
                                 </div>
-
-                                <p class="my-3 leading-6">Upload pics</p>
-                                <div>
-                                    <input type="file" name="Image_upload" style="margin-bottom: 10px;">
-<!--                                <a href="#" class="button soft-warning small"> Choose file</a>-->
-                                    <textarea name="caption" placeholder="Your caption goes here..." cols="30" rows="5" style="margin-bottom: 10px; background-color: #b8b8b6; color: white; padding: 5.5px;"></textarea>
-                                </div>
-
-                                <a href="#" class="uk-text-muted mt-3 uk-link"
-                                   uk-toggle="target: .choose-upload ;  animation: uk-animation-slide-right-small, uk-animation-slide-left-medium; queued: true">
-                                    Or Import Video </a>
+                                <form action="upload" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <p class="my-3 leading-6">Upload pics</p>
+                                    <div>
+                                        <input type="file" name="Image_upload" style="margin-bottom: 10px;">
+                                        <!--<a href="#" class="button soft-warning small"> Choose file</a>-->
+                                        <textarea name="caption" placeholder="Your caption goes here..." cols="30" rows="5" style="margin-bottom: 10px; background-color: #f0f0f0; padding: 5.5px;"></textarea>
+                                        <button class="bg-blue-700 button" type="submit">Upload</button>
+                                    </div>
+                                </form>
+                                    <!--<a href="#" class="uk-text-muted mt-3 uk-link"-->
+                                        <!--uk-toggle="target: .choose-upload ;  animation: uk-animation-slide-right-small, uk-animation-slide-left-medium; queued: true">-->
+                                        <!--Or Import Video </a>-->
                             </div>
 
                             <div class="uk-flex uk-flex-column choose-upload" hidden>
@@ -112,7 +114,6 @@
                                     Or Upload Video </a>
                             </div>
                         </div>
-                    </form>
                     <div class="px-4 py-3 -mx-5 -mb-4 mt-5 border-t text-sm">
                         Your Picture size Must be Maxmium 10MB
                     </div>
