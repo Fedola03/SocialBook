@@ -42,7 +42,7 @@ def signup(request):
                 user_model = User.objects.get(username=username)
                 new_profile = Profile.objects.create(user=user_model, id_user=user_model.id)
                 new_profile.save()
-                return redirect('signup')
+                return redirect('settings')
         else:
             messages.info(request, 'Password Not Matching')
             return redirect('signup')
@@ -123,8 +123,16 @@ def like_post(request):
     post_id = request.GET.get('post_id')
 
     post = Post.objects.get(id=post_id)
-    like_filter = LikePost.objects.filter(post_id=post_id, username=username).first
+    like_filter = LikePost.objects.filter(post_id=post_id, username=username)
 
     if like_filter is None:
         new_like = LikePost.objects.filter(post_id=post_id, username=username)
         new_like.save()
+        post.no_of_likes = post.no_of_likes + 1
+        post.save()
+        return redirect('/')
+    else:
+        like_filter.delete()
+        post.no_of_likes = post.no_of_likes - 1
+        post.save()
+        return redirect('/')
