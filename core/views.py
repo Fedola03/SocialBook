@@ -199,3 +199,21 @@ def follow(request):
             return redirect('/profile/'+user)
     else:
         return redirect('/')
+
+
+@login_required(login_url='signin')
+def search(request):
+    user_object = User.objects.get(username=request.user.username)
+    user_profile = Profile.objects.get(user=user_object)
+
+    username_profile_list = []
+    username = ''
+
+    if request.method == "POST":
+        username = request.POST['username']
+        username_object = User.objects.filter(username__icontains=username)
+
+        for users in username_object:
+            username_profile_list.append(Profile.objects.get(user=users))
+
+    return render(request, 'search.html', {'username': username, 'user_profile': user_profile, 'username_profile_list': username_profile_list})
