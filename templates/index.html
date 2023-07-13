@@ -13,18 +13,45 @@
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/tailwind.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        @keyframes rotate {
+            0% {
+                border-color: red;
+            }
+            50% {
+                border-color: green;
+            }
+            100% {
+                border-color: blue;
+            }
+        }
+        header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .header_search{
+            display: flex;
+            flex-direction: row;
+            padding: 0%;
+            border: 2.5px solid red;
+            border-radius: 5px;
+            animation: rotate 3s linear infinite;
+        }
+    </style>
 </head>
 
 <body>
-
     <header>
         <div class="header_inner">
             <form action="/search" method="POST">
                 {% csrf_token %}
                 <div class="left-side">
                     <!-- Logo -->
-                    <div id="logo" class=" uk-hidden@s">
-                        <a href="home.html">
+                    <div id="logo" class="uk-hidden@s">
+                        <a href="/">
                             <h1 style="text-transform: uppercase;"><b>Social Book</b></h1>
                         </a>
                     </div>
@@ -33,10 +60,11 @@
                         <i class="uil-bars"></i>
                     </div>-->
 
-<!--                    <div class="header_search">-->
-                        <input type="text" name="username" placeholder="Search for username..">&nbsp; &nbsp;
-                        <button type="submit"><i class="fa fa-search fa-1x"></i></button>
-<!--                    </div>-->
+                   <div class="header_search">
+                        <input style="width: 90%;" type="text" name="username" placeholder="Search for username..">&nbsp; &nbsp;
+                        <br>
+                        <button type="submit" style="width: 5%;"><i class="fa fa-search fa-1x"></i></button>
+                   </div>
                 </div>
             </form>
             <div class="right-side lg:pr-4">

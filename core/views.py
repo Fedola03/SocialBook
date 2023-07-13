@@ -216,4 +216,10 @@ def search(request):
         for users in username_object:
             username_profile_list.append(Profile.objects.get(user=users))
 
-    return render(request, 'search.html', {'username': username, 'user_profile': user_profile, 'username_profile_list': username_profile_list})
+    needed = {
+        'username': username,
+        'user_profile': user_profile,
+        'username_profile_list': username_profile_list
+    }
+
+    return render(request, 'search.html', needed)
