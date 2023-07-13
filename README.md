@@ -27,6 +27,7 @@ Project Name: SocialBook Media App
 **Known Bugs:**
   The search feature is not currently working properly.
   The user interface is not very user-friendly.
+  You have to create a profile when creating a new user.
 
 **Troubleshooting Instructions:**
   If you are having trouble installing the dependencies, try running the pip install -r requirements.txt command from the command line.
