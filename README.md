@@ -34,4 +34,4 @@ Project Name: SocialBook Media App
   If you are having trouble starting the development server, make sure that you have activated the virtual environment before running the runserver command.
 
 **Contact Information:**
-  If you have any questions or feedback, please contact me at efeadugbo3@gmail.com.
+  If you have any questions or feedback, please contact me at mailto:efeadugbo3@gmail.com.
