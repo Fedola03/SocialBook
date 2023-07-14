@@ -1,13 +1,26 @@
 {
-    "builds": [{
-        "src": "social_book/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
-    }],
-    "routes": [
+  "builds": [
+    {
+      "src": "social_book/wsgi.py",
+      "use": "@vercel/python",
+      "config": {"maxLambdaSize": "15mb", "runtime": "python3.9"}
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "social_book/wsgi.py"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/*.css",
+      "headers": [
         {
-            "src": "/(.*)",
-            "dest": "social_book/wsgi.py"
+          "key": "Content-Type",
+          "value": "text/css"
         }
-    ]
+      ]
+    }
+  ]
 }
